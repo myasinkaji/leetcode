@@ -37,3 +37,9 @@ tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+/*
+tasks.withType<JavaCompile> {
+    java.sourceCompatibility = JavaVersion.VERSION_17
+    java.targetCompatibility = JavaVersion.VERSION_17
+}
+*/

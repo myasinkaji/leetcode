@@ -3,13 +3,18 @@
  */
 package ir.home.tutorial.p1;
 
-import org.junit.jupiter.api.Test;
+import ir.home.tutorial.tags.FastTest;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+@IndicativeSentencesGeneration(separator = "@", generator = DisplayNameGenerator.IndicativeSentences.class)
 class CalculatorTest {
     //methodName_stateUnderTest_expectedBehavior()
-    @Test
+
+    @FastTest
+//    @DisplayName("🤣fadsjlfkdsajf afkjadslf;jadsf;klasd")
     void divide_validInput_returnSuccessfully() {
         //Arrange
         final var calculator = new Calculator();
@@ -20,5 +25,19 @@ class CalculatorTest {
         final var actual = calculator.divide(i, j);
         //Assertion
         assertEquals(expected, actual);
+    }
+
+    @Nested
+    class A_year_is_a_leap_year {
+
+        @BeforeAll
+        static void t() {
+//            fail("Java allows static members in inner classes!");
+        }
+
+        @Test
+        void tt() {
+            Assertions.assertTrue(true);
+        }
     }
 }
