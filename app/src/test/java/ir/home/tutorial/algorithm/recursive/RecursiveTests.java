@@ -21,9 +21,9 @@ class RecursiveTests {
         //methodName_stateUnderTest_expectedBehavior
         @ParameterizedTest
         @CsvSource(value = {
+                "50, 86267571219, 15, 14, 8",
                 "4, 14, 9, 8, 5",
                 "5, 26, 15, 14, 8",
-                "50, 86267571219, 15, 14, 8",
         })
         void f_positiveNumber_shouldReturnResult(int n, Long expected, int expectedCalls, int expectedAdds, int expectedMults) {
             //Arrange

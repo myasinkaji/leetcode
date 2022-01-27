@@ -1,4 +1,4 @@
-package ir.home.tutorial.p1;
+package ir.home.tutorial.junit.p1;
 
 public class Calculator {
     public int divide(int i, int j) {

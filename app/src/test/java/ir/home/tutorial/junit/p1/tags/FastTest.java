@@ -1,4 +1,4 @@
-package ir.home.tutorial.tags;
+package ir.home.tutorial.junit.p1.tags;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
