@@ -1,78 +1,50 @@
 package ir.home.tutorial.algorithm.leetcode.contest.weeklycontest277.q2;
 
 
+import java.util.Arrays;
+
 public class Solution {
-    private class IntLinkedList {
-        private IntNode head;
-        private IntNode tail;
-        private int count = 0;
-        private int remove() {
-            int value = head.value;
-            head = head.next;
-            count--;
-            return value;
-        }
-
-        private void add(int value) {
-            if (head == null)
-                head = tail = new IntNode(value, null);
-            else {
-                tail.next = new IntNode(value, null);
-                tail = tail.next;
-            }
-            count++;
-        }
-
-        public boolean isEmpty() {
-            return count == 0;
-        }
+    public static void main(String[] args) {
+        final int[] ints = new int[100_000];
+        Arrays.fill(ints, 0, 49_999, 100_000);
+        Arrays.fill(ints, 49_999, 99_999, 100_000);
+        new Solution().rearrangeArray(ints);
     }
-
-    private static class IntNode {
-        private final int value;
-        private IntNode next;
-
-        public IntNode(int value, IntNode next) {
-            this.value = value;
-            this.next = next;
-        }
-
-        public void setNext(IntNode next) {
-            this.next = next;
-        }
-    }
-
-
     public int[] rearrangeArray(int[] nums) {
-        //Todo: This must not be initialized in best case
-        //Todo: Test Linked list
-//        final int[] tmp = new int[nums.length >> 1];
-//        short last = 0;
-//        short head = -1;
+        final int[] tmp = new int[nums.length >> 1];
+        int last = 0;
+        int head = 0;
 
-        final var tmp = new IntLinkedList();
         int c = 0;
         boolean p = false;
         boolean n = false;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] < 0) {
                 if (p) {
-                    nums[c] = tmp.remove();
+                    nums[c] = tmp[head++];
+                    if (head == last) {
+                        head = last = 0;
+                        p = false;
+                    }
                     nums[c + 1] = nums[i];
                     c += 2;
-                    if (tmp.isEmpty()) p = false;
                 } else {
-                    tmp.add(nums[i]);
+                    tmp[last] = nums[i];
+                    last++;
                     n = true;
                 }
             } else {
                 if (n) {
                     nums[c] = nums[i];
-                    nums[c + 1] = tmp.remove();
+                    nums[c + 1] = tmp[head++];
+                    if (head == last) {
+                        head = last = 0;
+                        n = false;
+                    }
                     c += 2;
-                    if (tmp.isEmpty()) n = false;
                 } else {
-                    tmp.add(nums[i]);
+                    tmp[last] = nums[i];
+                    last++;
                     p = true;
                 }
             }

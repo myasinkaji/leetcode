@@ -30,10 +30,10 @@ class SolutionTest {
     }
 
     static Stream<Arguments> randomArrays() {
-        int n = 20000;
+        int n = 10;
         final var arguments = new Arguments[n];
         for (int i = 0; i < n; i++) {
-            final var origin = RandomUtils.generateEvenLengthEqualPositiveNegativeArray(2, 1000, -100_000, 100_000);
+            final var origin = RandomUtils.generateEvenLengthEqualPositiveNegativeArray(50_000, 100_000, -100_000, 100_000);
             arguments[i] = arguments(origin, rearrangeArray(origin));
         }
         return Stream.of(arguments);
