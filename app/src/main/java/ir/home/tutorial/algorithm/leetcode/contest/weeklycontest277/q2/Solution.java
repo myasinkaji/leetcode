@@ -5,10 +5,11 @@ public class Solution {
     private class IntLinkedList {
         private IntNode head;
         private IntNode tail;
-
+        private int count = 0;
         private int remove() {
             int value = head.value;
             head = head.next;
+            count--;
             return value;
         }
 
@@ -19,8 +20,12 @@ public class Solution {
                 tail.next = new IntNode(value, null);
                 tail = tail.next;
             }
+            count++;
         }
 
+        public boolean isEmpty() {
+            return count == 0;
+        }
     }
 
     private static class IntNode {
@@ -39,21 +44,38 @@ public class Solution {
 
 
     public int[] rearrangeArray(int[] nums) {
-        short len = (short) (nums.length >> 1);
-        final int[] positives = new int[len];
-        final int[] negatives = new int[len];
-        int posIndex = 0, negIndex = 0;
-        for (int i = 0; i <nums.length ; i++) {
-            int num = nums[i];
-            if (num < 0)
-                negatives[negIndex++] = num;
-            else
-                positives[posIndex++] = num;
-        }
-        posIndex = negIndex = 0;
-        for (int i = 0; i < len; i++) {
-            nums[i << 1] = positives[posIndex++];
-            nums[(i << 1) + 1] = negatives[negIndex++];
+        //Todo: This must not be initialized in best case
+        //Todo: Test Linked list
+//        final int[] tmp = new int[nums.length >> 1];
+//        short last = 0;
+//        short head = -1;
+
+        final var tmp = new IntLinkedList();
+        int c = 0;
+        boolean p = false;
+        boolean n = false;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] < 0) {
+                if (p) {
+                    nums[c] = tmp.remove();
+                    nums[c + 1] = nums[i];
+                    c += 2;
+                    if (tmp.isEmpty()) p = false;
+                } else {
+                    tmp.add(nums[i]);
+                    n = true;
+                }
+            } else {
+                if (n) {
+                    nums[c] = nums[i];
+                    nums[c + 1] = tmp.remove();
+                    c += 2;
+                    if (tmp.isEmpty()) n = false;
+                } else {
+                    tmp.add(nums[i]);
+                    p = true;
+                }
+            }
         }
         return nums;
     }
