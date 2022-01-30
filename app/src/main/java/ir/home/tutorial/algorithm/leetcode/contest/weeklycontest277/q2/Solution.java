@@ -1,15 +1,7 @@
 package ir.home.tutorial.algorithm.leetcode.contest.weeklycontest277.q2;
 
-
-import java.util.Arrays;
-
 public class Solution {
-    public static void main(String[] args) {
-        final int[] ints = new int[100_000];
-        Arrays.fill(ints, 0, 49_999, 100_000);
-        Arrays.fill(ints, 49_999, 99_999, 100_000);
-        new Solution().rearrangeArray(ints);
-    }
+
     public int[] rearrangeArray(int[] nums) {
         final int[] tmp = new int[nums.length >> 1];
         int last = 0;
