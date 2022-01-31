@@ -98,6 +98,21 @@ class SolutionTest {
         );
     }
 
+    @Test
+    void tesLeetcodeWrong1() {
+        final var nums = new int[]{723, 723, -423, 723, -647, 532, 723, 723, 212, -391, 723};
+        final int actual = solution.countElements(nums);
+        assertEquals(4, actual);
+    }
+
+    @Test
+    void tesLeetcodeWrong2() {
+        final var nums = new int[100];
+        Arrays.fill(nums, 0);
+        final int actual = solution.countElements(nums);
+        assertEquals(0, actual);
+    }
+
     @ParameterizedTest
     @MethodSource(value = "withoutRepetitionArrays")
     void when_thereIsNoRepeatAtAll_expect_lengthMinusTwo(int[] nums) {

@@ -1,5 +1,5 @@
 package ir.home.tutorial.algorithm.leetcode.contest.weeklycontest277.q1;
-
+//10.20.153.49
 public class Solution {
     public int countElements(int[] nums) {
         if (nums == null || nums.length <= 2)
@@ -18,11 +18,10 @@ public class Solution {
                 maxRepetitionCount = 0;
             } else {
                 if (min == nums[i]) minRepetitionCount++;
-                else if (max == nums[i]) maxRepetitionCount++;
+                if (max == nums[i]) maxRepetitionCount++;
             }
         }
 
-        int arrayBoundaries = min == max ? 1 : 2;
-        return nums.length - arrayBoundaries - minRepetitionCount - maxRepetitionCount;
+        return min == max ? 0 : nums.length - 2 - minRepetitionCount - maxRepetitionCount;
     }
 }
