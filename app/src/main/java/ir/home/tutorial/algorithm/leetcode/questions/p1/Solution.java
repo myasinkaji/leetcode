@@ -5,9 +5,7 @@ import java.util.HashMap;
 class Solution {
     public int[] twoSum(int[] nums, int target) {
 
-        if (nums.length == 2)
-            return new int[]{0, 1};
-        else if (nums[nums.length - 1] + nums[nums.length - 2] == target)
+        if (nums[nums.length - 1] + nums[nums.length - 2] == target)
             return new int[]{nums.length - 1, nums.length - 2};
         else {
             final var map = new HashMap<Integer, Integer>();
