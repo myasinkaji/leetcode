@@ -15,13 +15,13 @@ class SolutionTest {
 
     static Stream<Arguments> questionSampleArrays() {
         return Stream.of(
-//                arguments(linkedList(2, 4, 3), linkedList(5, 6, 4), linkedList(7, 0, 8)),
-//                arguments(linkedList(0), linkedList(0), linkedList(0)),
-//                arguments(linkedList(9, 9, 9, 9, 9, 9, 9), linkedList(9, 9, 9, 9), linkedList(8, 9, 9, 9, 0, 0, 0, 1)),
-//                arguments(linkedList(9, 9, 9, 9), linkedList(9, 9, 9, 9, 9, 9, 9), linkedList(8, 9, 9, 9, 0, 0, 0, 1)),
-//                arguments(linkedList(1, 1, 1, 1), linkedList(0), linkedList(1, 1, 1, 1)),
-//                arguments(linkedList(1, 1, 1, 1), linkedList(1, 1, 1, 1), linkedList(2, 2, 2, 2)),
-//                arguments(linkedList(1, 1, 1, 1), linkedList(9, 9, 9, 9), linkedList(0, 1, 1, 1, 1)),
+                arguments(linkedList(2, 4, 3), linkedList(5, 6, 4), linkedList(7, 0, 8)),
+                arguments(linkedList(0), linkedList(0), linkedList(0)),
+                arguments(linkedList(9, 9, 9, 9, 9, 9, 9), linkedList(9, 9, 9, 9), linkedList(8, 9, 9, 9, 0, 0, 0, 1)),
+                arguments(linkedList(9, 9, 9, 9), linkedList(9, 9, 9, 9, 9, 9, 9), linkedList(8, 9, 9, 9, 0, 0, 0, 1)),
+                arguments(linkedList(1, 1, 1, 1), linkedList(0), linkedList(1, 1, 1, 1)),
+                arguments(linkedList(1, 1, 1, 1), linkedList(1, 1, 1, 1), linkedList(2, 2, 2, 2)),
+                arguments(linkedList(1, 1, 1, 1), linkedList(9, 9, 9, 9), linkedList(0, 1, 1, 1, 1)),
                 arguments(linkedList(1, 2, 3, 4, 5, 6, 7, 8, 9), linkedList(9, 8, 7, 6, 5, 4, 3, 2, 1), linkedList(0, 1, 1, 1, 1, 1, 1, 1, 1, 1)),
                 arguments(linkedList(8, 9), linkedList(9, 8), linkedList(7, 8, 1)),
                 arguments(linkedList(9, 8, 7), linkedList(7, 8, 9), linkedList(6, 7, 7, 1))
