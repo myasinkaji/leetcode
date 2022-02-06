@@ -1,4 +1,4 @@
-package ir.home.tutorial.algorithm.leetcode.contest.weeklycontest279.p1;
+package ir.home.tutorial.algorithm.leetcode.contest.weekly.weeklycontest279.p1;
 
 import java.util.Arrays;
 import java.util.Comparator;

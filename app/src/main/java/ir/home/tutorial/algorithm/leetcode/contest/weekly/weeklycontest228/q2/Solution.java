@@ -1,4 +1,4 @@
-package ir.home.tutorial.algorithm.leetcode.contest.weeklycontest228.q2;
+package ir.home.tutorial.algorithm.leetcode.contest.weekly.weeklycontest228.q2;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ir.home.tutorial.algorithm.leetcode.contest.weeklycontest277.q1;
+package ir.home.tutorial.algorithm.leetcode.contest.weekly.weeklycontest277.q1;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

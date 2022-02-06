@@ -1,4 +1,4 @@
-package ir.home.tutorial.algorithm.leetcode.contest.weeklycontest228.q2;
+package ir.home.tutorial.algorithm.leetcode.contest.weekly.weeklycontest228.q2;
 
 import ir.home.tutorial.algorithm.RandomUtils;
 import org.junit.jupiter.api.BeforeAll;

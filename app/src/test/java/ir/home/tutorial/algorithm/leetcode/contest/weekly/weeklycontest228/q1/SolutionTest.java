@@ -1,4 +1,4 @@
-package ir.home.tutorial.algorithm.leetcode.contest.weeklycontest277.q2;
+package ir.home.tutorial.algorithm.leetcode.contest.weekly.weeklycontest228.q1;
 
 import ir.home.tutorial.algorithm.RandomUtils;
 import org.junit.jupiter.api.BeforeAll;
@@ -24,8 +24,9 @@ class SolutionTest {
 
     static Stream<Arguments> leetcodeSampleArrays() {
         return Stream.of(
-                arguments(new int[]{3, 1, -2, -5, 2, -4}, new int[]{3, -2, 1, -5, 2, -4}),
-                arguments(new int[]{-1, 1}, new int[]{1, -1})
+                arguments(new int[]{5,3,6,1,12}, 3, 24),
+                arguments(new int[]{-5,3,-6,-1,-12}, 3, 6),
+                arguments(new int[]{2,7,9}, 4, 4)
         );
     }
 
@@ -58,16 +59,9 @@ class SolutionTest {
 
     @ParameterizedTest
     @MethodSource("leetcodeSampleArrays")
-    void testLeetcodeSampleArrays(int[] original, int[] expected) {
-        final int[] rearrangedArray = solution.rearrangeArray(original);
+    void testLeetcodeSampleArrays(int[] nums, int original, int expected) {
+        final int rearrangedArray = solution.findFinalValue(nums, original);
 
         assertThat(rearrangedArray).isEqualTo(expected);
-    }
-
-    @ParameterizedTest
-    @MethodSource("randomArrays")
-    void testRandomArrays(int[] original, int[] expected) {
-        final var rearranged = solution.rearrangeArray(original);
-        assertThat(rearranged).isEqualTo(expected);
     }
 }
