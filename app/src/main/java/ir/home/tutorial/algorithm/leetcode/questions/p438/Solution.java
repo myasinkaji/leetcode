@@ -16,33 +16,32 @@ class Solution {
         int start = 0;
         final int mustFind = p.length();
         int founded = 0;
-        var anagramsCopy = new Integer[anagrams.length];
-        System.arraycopy(anagrams, 0, anagramsCopy, 0, anagrams.length);
+        var anagramsCopy = new int[26];
 
         for (int i = 0; i < s.length(); i++) {
             final var index = s.charAt(i) - 97;
-            if (anagramsCopy[index] == null) {
+            if (anagrams[index] == null) {
                 if (founded > 0) {
-                    System.arraycopy(anagrams, 0, anagramsCopy, 0, anagrams.length);
+                    anagramsCopy = new int[26];
                     founded = 0;
                 }
                 start = i + 1;
             } else {
-                if (anagramsCopy[index] == 0) {
+                if (anagramsCopy[index] == anagrams[index]) {
                     char removedChar;
                     do {
                         removedChar = s.charAt(start);
                         start++;
                         int idx = removedChar - 97;
-                        anagramsCopy[idx]++;
+                        anagramsCopy[idx]--;
                         founded--;
                     } while (removedChar != s.charAt(i));
                 }
-                anagramsCopy[index]--;
+                anagramsCopy[index]++;
                 founded++;
                 if (founded == mustFind) {
                     list.add(start);
-                    anagramsCopy[s.charAt(start) - 97]++;
+                    anagramsCopy[s.charAt(start) - 97]--;
                     start++;
                     founded--;
                 }
