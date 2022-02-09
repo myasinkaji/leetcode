@@ -25,6 +25,10 @@ class SolutionTest {
                 arguments("abab", "ab", List.of(0, 1, 2)),
                 arguments("aaaaabbbbbaabbaabbaaabbb", "aaa", List.of(0, 1, 2, 18)),
                 arguments("cabbefbacbaebclcblcbac", "abc", List.of(0, 6, 7, 8, 18, 19)),
+                arguments("azqbalababaa", "baa", List.of(6, 8, 9)),
+                arguments("abaqstaba", "baa", List.of(0, 6)),
+                arguments("abbqaaabbaa", "baa", List.of(5, 8)),
+                arguments("azazazazazazazazazazazazazaz", "baa", List.of()),
                 arguments("a", "a", List.of(0))
         );
     }

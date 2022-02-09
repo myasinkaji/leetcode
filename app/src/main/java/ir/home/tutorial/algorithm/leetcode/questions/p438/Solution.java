@@ -1,39 +1,51 @@
 package ir.home.tutorial.algorithm.leetcode.questions.p438;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
 
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
-        final var map = new HashMap<Character, Integer>((int) (p.length() / 0.75));
-        final var queue = new ArrayBlockingQueue<Character>(p.length());
         final var list = new ArrayList<Integer>();
-
+        final Integer[] anagrams = new Integer[26];
         for (int i = 0; i < p.length(); i++) {
-            final var c = p.charAt(i);
-            int val = 1;
-            if (map.containsKey(c)) {
-                val = map.get(c) + 1;
-            }
-            map.put(c, val);
+            final var index = p.charAt(i) - 97;
+            if (anagrams[index] == null) anagrams[index] = 1;
+            else anagrams[index]++;
         }
-        for (int i = 0; i < s.length(); i++) {
-            final var c = s.charAt(i);
-            if (map.containsKey(c)) {
-                if (queue.contains(c) && queue.stream().filter(ch -> ch == c).count() >= map.get(c)) {
-                    char cr = queue.remove();
-                    while (cr != c) cr = queue.remove();
-                }
-                queue.add(c);
-                if (queue.size() == p.length()) {
-                    list.add(i - p.length() + 1);
-                    queue.remove();
-                }
 
+        int start = 0;
+        final int mustFind = p.length();
+        int founded = 0;
+        var anagramsCopy = new Integer[anagrams.length];
+        System.arraycopy(anagrams, 0, anagramsCopy, 0, anagrams.length);
+
+        for (int i = 0; i < s.length(); i++) {
+            final var index = s.charAt(i) - 97;
+            if (anagramsCopy[index] == null) {
+                if (founded > 0) {
+                    System.arraycopy(anagrams, 0, anagramsCopy, 0, anagrams.length);
+                    founded = 0;
+                }
+                start = i + 1;
             } else {
-                queue.clear();
+                if (anagramsCopy[index] == 0) {
+                    char removedChar;
+                    do {
+                        removedChar = s.charAt(start);
+                        start++;
+                        int idx = removedChar - 97;
+                        anagramsCopy[idx]++;
+                        founded--;
+                    } while (removedChar != s.charAt(i));
+                }
+                anagramsCopy[index]--;
+                founded++;
+                if (founded == mustFind) {
+                    list.add(start);
+                    anagramsCopy[s.charAt(start) - 97]++;
+                    start++;
+                    founded--;
+                }
             }
         }
 
