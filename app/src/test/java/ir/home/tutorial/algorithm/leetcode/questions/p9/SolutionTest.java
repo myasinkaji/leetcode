@@ -23,7 +23,8 @@ class SolutionTest {
                 arguments(121, true),
                 arguments(-121, false),
                 arguments(10, false),
-                arguments(1001001, true)
+                arguments(1001001, true),
+                arguments(100110001, false)
         );
     }
 
