@@ -64,10 +64,10 @@ class SolutionTest {
 
     @ParameterizedTest
     @MethodSource("questionSampleArrays")
-    void testQuestionSampleArrays(final Node head) {
+    void testQuestionSampleArrays(final Node head, final Node expected) {
         final var actual = solution.copyRandomList(head);
         var actualTail = actual;
-        var expectedTail = head;
+        var expectedTail = expected;
         for (; expectedTail != null; actualTail = actualTail.next, expectedTail = expectedTail.next) {
             if (actualTail == expectedTail || actualTail.val != expectedTail.val || (expectedTail.random != null && expectedTail.random.val != actualTail.random.val)) {
                 final var actualList = new StringBuilder();
@@ -75,7 +75,7 @@ class SolutionTest {
                 for (actualTail = actual; actualTail != null; actualTail = actualTail.next)
                     actualList.append(actualTail.val).append(", ");
 
-                for (expectedTail = head; expectedTail != null; expectedTail = expectedTail.next)
+                for (expectedTail = expected; expectedTail != null; expectedTail = expectedTail.next)
                     expectedList.append(expectedTail.val).append(", ");
 
                 fail("actual: %s\nexpected to be: %s", actualList.toString(), expectedList.toString());
