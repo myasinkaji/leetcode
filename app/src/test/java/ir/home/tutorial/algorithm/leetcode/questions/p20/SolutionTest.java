@@ -16,6 +16,7 @@ class SolutionTest {
 
     static Stream<Arguments> questionSampleArrays() {
         return Stream.of(
+                arguments("{[]}", true),
                 arguments("()", true),
                 arguments("()[]{}", true),
                 arguments("(]", false),

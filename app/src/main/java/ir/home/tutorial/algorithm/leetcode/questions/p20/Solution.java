@@ -7,18 +7,20 @@ class Solution {
     public static final char CLOSE_BRACKET = ']';
     public static final char OPEN_CURLY_BRACES = '{';
     public static final char CLOSE_CURLY_BRACES = '}';
+    public static char[] stack = new char[1];
 
     public boolean isValid(String s) {
         if (s.length() % 2 == 1)
             return false;
-        final char[] stack = new char[s.length() / 2];//Todo only create one 5000 for all test case
+        if (stack.length < s.length() / 2)
+            stack = new char[s.length() / 2];
         short top = -1;
         for (short i = 0; i < s.length(); i++) {
             switch (s.charAt(i)) {
                 case OPEN_CURLY_BRACES:
                 case OPEN_PARENTHESES:
                 case OPEN_BRACKET:
-                    if (top == stack.length - 1)
+                    if (top == s.length() / 2 - 1)
                         return false;
                     stack[++top] = s.charAt(i);
                     break;
