@@ -18,6 +18,8 @@ class SolutionTest {
                 arguments(linkedList(1, 3, 2, 0, -4), true),
                 arguments(linkedList(0, 1, 2), true),
                 arguments(linkedList(null, 1), false),
+                arguments(linkedList(null, 1, 2), false),
+                arguments(null, false),
                 arguments(linkedList(0, 1), true),
                 arguments(linkedList(0, 1, 2, 3), true),
                 arguments(linkedList(2, 1, 2, 3), true)
