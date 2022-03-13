@@ -24,16 +24,16 @@ class ListNode {
 
 public class Solution {
     public boolean hasCycle(final ListNode head) {
-        if (head == null || head.next == null)
+        if (head == null)
             return false;
 
-        ListNode hare = head;
+        ListNode hare = head.next;
         ListNode tortoise = head;
         while (hare != null && hare.next != null) {
-            hare = hare.next.next;
-            tortoise = tortoise.next;
             if (hare == tortoise)
                 return true;
+            hare = hare.next.next;
+            tortoise = tortoise.next;
         }
 
         return false;
