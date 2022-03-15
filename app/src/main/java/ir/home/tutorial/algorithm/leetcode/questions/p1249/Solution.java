@@ -1,12 +1,8 @@
 package ir.home.tutorial.algorithm.leetcode.questions.p1249;
 
-record Pair(int index, int deleted) {
-}
-
 class Solution {
     public String minRemoveToMakeValid(String s) {
-//        final var stack = new Stack<Pair>();
-        final var stack = new Pair[s.length() / 2];
+        final var stack = new int[s.length() % 2 == 0 ? s.length() : s.length() - 1];
         int index = -1;
         final StringBuilder sb = new StringBuilder();
         int deleted = 0;
@@ -15,13 +11,16 @@ class Solution {
                 sb.append(s.charAt(i));
             } else {
                 if ((s.charAt(i) == '(')) {
-                    if ((index + 1 < stack.length))
-                        stack[++index] = new Pair(i, deleted);
+                    if ((index + 1 < stack.length)) {
+                        stack[++index] = i;
+                        stack[++index] = deleted;
+                    }
                 } else {
                     if (index > -1) {
-                        final var entry = stack[index--];
+                        final var del = stack[index--];
+                        final var idx = stack[index--];
                         sb.append(')');
-                        sb.insert(entry.index() - (index + 1 + entry.deleted()), '(');
+                        sb.insert(idx - ((index - 1) / 2 + 1 + del), '(');
                     } else deleted++;
                 }
             }
