@@ -16,6 +16,7 @@ class SolutionTest {
     static Stream<Arguments> questionSampleArrays() {
         return Stream.of(
                 arguments("(a(b(c)d)", "a(b(c)d)"),
+                arguments("(a(b(c))))d)(", "(a(b(c)))d"),
                 arguments("lee(t(c)o)de)", "lee(t(c)o)de"),
                 arguments("a)b(c)d", "ab(c)d"),
                 arguments("))((", ""),
