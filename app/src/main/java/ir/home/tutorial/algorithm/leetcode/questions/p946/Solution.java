@@ -1,20 +1,19 @@
 package ir.home.tutorial.algorithm.leetcode.questions.p946;
 
-import java.util.Stack;
-
 class Solution {
     public boolean validateStackSequences(int[] pushed, int[] popped) {
-        final var stack = new Stack<Integer>();
+        final var stack = new int[pushed.length];
+        int index = -1;
         for (int i = 0, popIndex = 0; i < pushed.length; i++) {
             if (pushed[i] == popped[popIndex]) {
                 ++popIndex;
-                while (stack.size() > 0 && popped[popIndex] == stack.peek()) {
-                    stack.pop();
+                while (index > -1 && popped[popIndex] == stack[index]) {
+                    index--;
                     popIndex++;
                 }
-            } else stack.push(pushed[i]);
+            } else stack[++index] = pushed[i];
         }
 
-        return stack.isEmpty();
+        return index == -1;
     }
 }
