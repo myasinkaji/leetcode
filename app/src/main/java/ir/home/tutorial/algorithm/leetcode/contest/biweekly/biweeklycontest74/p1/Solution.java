@@ -1,15 +1,18 @@
 package ir.home.tutorial.algorithm.leetcode.contest.biweekly.biweeklycontest74.p1;
 
 class Solution {
+    final int[] arr = new int[501];
+    int testCaseNumber = 0;
+
     public boolean divideArray(int[] nums) {
-        final var map = new int[501];
+        testCaseNumber++;
         int remain = 0;
         for (int i : nums) {
-            if (map[i] == 1) {
-                map[i]= 0;
+            if (arr[i] == testCaseNumber) {
+                arr[i] = 0;
                 remain--;
             } else {
-                map[i]++;
+                arr[i] = testCaseNumber;
                 remain++;
             }
         }
