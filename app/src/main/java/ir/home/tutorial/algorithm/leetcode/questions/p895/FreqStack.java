@@ -1,6 +1,8 @@
 package ir.home.tutorial.algorithm.leetcode.questions.p895;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 class Node {
@@ -13,35 +15,36 @@ class Node {
 }
 
 class FreqStack {
-    private final Map<Integer, Node> pointers = new HashMap<>();
+    private final List<Node> pointers = new ArrayList<>();
     private final Map<Integer, Integer> counter = new HashMap<>();
     private static final Node top = new Node(0); // fake start node
 
     public FreqStack() {
+        pointers.add(top);
     }
 
     public void push(int x) {
-        int count = counter.getOrDefault(x, 0) + 1;
-        counter.put(x, count);
-        final var pointer = pointers.get(count);
+        int count = counter.getOrDefault(x, 0);
         final var node = new Node(x);
-        if (pointer != null) {
-            node.next = pointer.next;
-            pointer.next = node;
-        } else {
+        if (pointers.size() == count) {
             node.next = top.next;
             top.next = node;
-            pointers.put(count - 1, top.next);
-            pointers.put(count, top);
+            pointers.set(count - 1, top.next);
+            pointers.add(count, top);
+        } else {
+            final var pointer = pointers.get(count);
+            node.next = pointer.next;
+            pointer.next = node;
         }
+        counter.put(x, count + 1);
     }
 
     public int pop() {
         final var x = top.next.val;
         final var count = counter.put(x, counter.get(x) - 1);
-        if (pointers.get(count - 1) == top.next) {
-            pointers.remove(count);
-            pointers.put(count - 1, top);
+        if (pointers.size() > 1 && pointers.get(count - 2) == top.next) {
+            pointers.set(count - 2, top);
+            pointers.remove(count - 1);
         }
         top.next = top.next.next;
         return x;
