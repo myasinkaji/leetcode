@@ -19,7 +19,9 @@ class SolutionTest {
                 arguments(new int[]{3, 2, 3, 2, 2, 2, 4, 4}, true),
                 arguments(new int[]{3, 2, 3, 2, 2, 2, 4, 4, 4, 5}, false),
                 arguments(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, true),
-                arguments(new int[]{1, 2, 3, 4}, false)
+                arguments(new int[]{1, 2, 3, 4}, false),
+                arguments(new int[]{2, 3, 4, 5}, false),
+                arguments(new int[]{2, 3}, false)
         );
     }
 
