@@ -21,7 +21,8 @@ class SolutionTest {
                 arguments(new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, true),
                 arguments(new int[]{1, 2, 3, 4}, false),
                 arguments(new int[]{2, 3, 4, 5}, false),
-                arguments(new int[]{2, 3}, false)
+                arguments(new int[]{2, 3}, false),
+                arguments(new int[]{10,5,3,4,17,11,15,13,11,18,8,17,20,8,14,13,3,17,14,11,8,2,12,17,6,7,17,7,2,2,4,14,9,7}, false)
         );
     }
 

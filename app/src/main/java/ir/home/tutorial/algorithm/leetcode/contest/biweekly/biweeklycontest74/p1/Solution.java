@@ -1,8 +1,8 @@
 package ir.home.tutorial.algorithm.leetcode.contest.biweekly.biweeklycontest74.p1;
 
 class Solution {
-    final int[] arr = new int[501];
-    int testCaseNumber = 0;
+    static final int[] arr = new int[501];
+    static int testCaseNumber = 0;
 
     public boolean divideArray(int[] nums) {
         testCaseNumber++;
