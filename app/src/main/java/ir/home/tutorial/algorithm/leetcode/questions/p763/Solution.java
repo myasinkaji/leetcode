@@ -2,35 +2,40 @@ package ir.home.tutorial.algorithm.leetcode.questions.p763;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
-class Boundary {
-    final short start;
-    short end;
-
-    Boundary(short start) {
-        this.start = start;
-    }
-}
 class Solution {
+    static final short[] starts = new short[26];
+    static final short[] ends = new short[26];
+
     public List<Integer> partitionLabels(String s) {
-        final var list = new ArrayList<Integer>();
-        final var boundaries = new Boundary[26];
-        for (short i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            if (boundaries[ch - 97] == null)
-                boundaries[ch - 97] = new Boundary(i);
-            else boundaries[ch - 97].end = i;
+        for (int i = 0; i < 26; i++) {
+            starts[i] = 0;
+            ends[i] = 0;
         }
-        Arrays.sort(boundaries, Comparator.comparing(b -> b != null ? b.start : Short.MAX_VALUE));
-        for (short i = 0; i < 26 && boundaries[i] != null;) {
-            final var boundary = boundaries[i];
+        final var list = new ArrayList<Integer>();
+        for (short i = 1; i <= s.length(); i++) {
+            char ch = s.charAt(i - 1);
+            if (starts[ch - 97] == 0)
+                starts[ch - 97] = i;
+            else ends[ch - 97] = i;
+        }
+
+        Arrays.sort(starts);
+        short i = 0;
+        for (; starts[i] == 0; i++) {
+        }
+
+        while (i < 26) {
+            final var start = starts[i];
+            var end = Math.max(ends[s.charAt(start - 1) - 97], 0);
             i++;
-            for (; i < 26 && boundaries[i] != null && boundaries[i].start < boundary.end; i++)
-                if (boundaries[i].end > boundary.end)
-                    boundary.end = boundaries[i].end;
-            list.add(boundary.end == 0 ? 1 :  boundary.end - boundary.start + 1);
+            for (; i < 26 && starts[i] < end; i++) {
+                final var i1 = ends[s.charAt(starts[i] - 1) - 97];
+                if (i1 > end)
+                    end = i1;
+            }
+            list.add(end == 0 ? 1 : end - start + 1);
         }
 
         return list;
