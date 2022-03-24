@@ -1,22 +1,17 @@
 package ir.home.tutorial.algorithm.leetcode.questions.p881;
 
 
+import java.util.Arrays;
+
 class Solution {
     public int numRescueBoats(int[] people, int limit) {
+        Arrays.sort(people);
         int count = 0;
-        for (int i = people.length - 1; i > -1; i--) {
-            if (people[i] != 0) {
-                for (int j = i - 1; j > -1; j--) {
-                    if (people[j] != 0 && people[j] + people[i] <= limit) {
-                        people[j] = 0;
-                        break;
-                    }
-                }
-                count++;
-                people[i] = 0;
-            }
+        for (int i = 0, j = people.length - 1; i <= j; j--) {
+            if (people[i] + people[j] <= limit)
+                i++;
+            count++;
         }
-
         return count;
     }
 }
